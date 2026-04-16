@@ -1,0 +1,32 @@
+{
+  "name": "code-library",
+  "version": "1.0.0",
+  "description": "Deine Code Library – HTML, CSS, JavaScript & TypeScript Nachschlagewerk",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"vite\" \"tsx watch server/index.ts\"",
+    "build": "vite build",
+    "preview": "vite preview",
+    "server": "tsx server/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "express-rate-limit": "^7.4.0",
+    "openai": "^6.34.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.7.0",
+    "aos": "^2.3.4",
+    "concurrently": "^9.0.0",
+    "fuse.js": "^7.0.0",
+    "lucide": "^0.447.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.2",
+    "vite": "^5.4.8"
+  }
+}

@@ -1,0 +1,231 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   ANIMATIONS.CSS – Keyframes, AOS Overrides, Hover & Scroll Transitions
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* ── Keyframes ─────────────────────────────────────────────────────────────── */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+@keyframes checkmark {
+  0% { stroke-dashoffset: 30; }
+  100% { stroke-dashoffset: 0; }
+}
+
+/* ── Page Transition ───────────────────────────────────────────────────────── */
+.page-enter {
+  animation: fadeInUp 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* ── AOS Custom Overrides ──────────────────────────────────────────────────── */
+[data-aos] {
+  pointer-events: none;
+}
+[data-aos].aos-animate {
+  pointer-events: auto;
+}
+
+/* ── Gradient Hero Background ──────────────────────────────────────────────── */
+.gradient-animated {
+  background: linear-gradient(
+    135deg,
+    #6c63ff,
+    #8b7cf6,
+    #a855f7,
+    #6c63ff
+  );
+  background-size: 200% 200%;
+  animation: gradientShift 6s ease infinite;
+}
+
+/* ── Floating Elements ─────────────────────────────────────────────────────── */
+.float-animation {
+  animation: float 4s ease-in-out infinite;
+}
+
+.float-animation-delayed {
+  animation: float 4s ease-in-out 1s infinite;
+}
+
+/* ── Hover Effects ─────────────────────────────────────────────────────────── */
+.hover-lift {
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.hover-glow {
+  transition: box-shadow var(--transition-base);
+}
+.hover-glow:hover {
+  box-shadow: var(--shadow-primary);
+}
+
+.hover-scale {
+  transition: transform var(--transition-fast);
+}
+.hover-scale:hover {
+  transform: scale(1.02);
+}
+
+/* ── Skeleton Loading ──────────────────────────────────────────────────────── */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-border) 25%,
+    var(--color-bg-secondary) 50%,
+    var(--color-border) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Typing Indicator ──────────────────────────────────────────────────────── */
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: var(--space-3) var(--space-4);
+}
+
+.typing-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-text-muted);
+  animation: blink 1.4s infinite both;
+}
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+/* ── Cursor Blink ──────────────────────────────────────────────────────────── */
+.cursor-blink::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
+  color: var(--color-primary);
+}
+
+/* ── Entry Card Appear Animation ───────────────────────────────────────────── */
+.entry-card--animate {
+  animation: fadeInUp 0.4s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* ── Transition Utilities ──────────────────────────────────────────────────── */
+.transition-fast { transition: all var(--transition-fast); }
+.transition-base { transition: all var(--transition-base); }
+.transition-slow { transition: all var(--transition-slow); }
+
+/* ── Scroll Indicator ──────────────────────────────────────────────────────── */
+.scroll-indicator {
+  animation: float 2s ease-in-out infinite;
+}
+
+/* ── Book Card Hover 3D ────────────────────────────────────────────────────── */
+.book-card-3d {
+  transition: transform var(--transition-slow), box-shadow var(--transition-slow);
+  transform-style: preserve-3d;
+}
+.book-card-3d:hover {
+  transform: perspective(800px) rotateY(-5deg) rotateX(2deg) translateY(-8px);
+  box-shadow: var(--shadow-xl);
+}
